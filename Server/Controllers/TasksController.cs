@@ -1,5 +1,8 @@
+using System.Collections.Generic;
 using Server.Models;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
+using System.Threading.Tasks;
 
 namespace Server.Controllers {
   [ApiController]
@@ -12,21 +15,21 @@ namespace Server.Controllers {
     }
 
     [HttpGet]
-    public async Task<ActionResult<IEnumerable<Task>>> GetAllAsync() {
+    public async System.Threading.Tasks.Task<ActionResult<IEnumerable<Server.Models.Task>>> GetAllAsync() {
       return await _context.Tasks.ToListAsync();
     }
 
     [HttpGet("{taskId}")]
-    public async Task<ActionResult<Task>> GetTaskByIdAsync(int taskId) {
-      Task task = await _context.Tasks.FindAsync(taskId);
+    public async System.Threading.Tasks.Task<ActionResult<Server.Models.Task>> GetTaskByIdAsync(int taskId) {
+      Server.Models.Task task = await _context.Tasks.FindAsync(taskId);
 
-      if(task = null)
+      if(task == null)
         return NotFound();
       return task;
     }
 
     [HttpPost]
-    public async Task<ActionResult<Task>> SaveTaskAsync(Task task) {
+    public async System.Threading.Tasks.Task<ActionResult<Server.Models.Task>> SaveTaskAsync(Server.Models.Task task) {
       await _context.Tasks.AddAsync(task);
       await _context.SaveChangesAsync();
 
@@ -34,7 +37,7 @@ namespace Server.Controllers {
     }
 
     [HttpPut]
-    public async Task<ActionResult> UpdateTaskAsync(Task task) {
+    public async System.Threading.Tasks.Task<ActionResult> UpdateTaskAsync(Server.Models.Task task) {
       _context.Tasks.Update(task);
       await _context.SaveChangesAsync();
 
@@ -42,9 +45,9 @@ namespace Server.Controllers {
     }
 
     [HttpDelete("{taskId}")]
-    public async Task<ActionResult> DeleteTaskAsync(int taskId) {
-      Task task = await _context.Tasks.FindAsync(taskId);
-      _context.Remove(pessoa);
+    public async System.Threading.Tasks.Task<ActionResult> DeleteTaskAsync(int taskId) {
+      Server.Models.Task task = await _context.Tasks.FindAsync(taskId);
+      _context.Remove(task);
       await _context.SaveChangesAsync();
       return Ok();
     }
