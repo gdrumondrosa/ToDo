@@ -1,0 +1,36 @@
+<div class="container p-5">
+  <div class="row justify-content-md-center">
+    <div class="col-6 border-light rounded p-5 shadow" *ngIf="form">
+      <h4>{{formTitle}}</h4>
+      <hr>
+
+      <form [formGroup]="form">
+        <div class="form-group">
+          <label>Atividade</label>
+          <input type="text" class="form-control form-control-sm" formControlName="activity">
+        </div>
+
+        <div class="form-group pt-3">
+          <label>Tipo</label>
+          <input type="text" class="form-control form-control-sm" formControlName="type">
+        </div>
+
+        <div class="form-group pt-3">
+          <label>Status</label>
+          <input type="text" class="form-control form-control-sm" formControlName="status">
+        </div>
+
+        <div class="container p-0 pt-4">
+          <div class="row row-cols-auto">
+            <div class="col">
+              <button type="submit" class="btn btn-sm btn-outline-secondary">Salvar</button>
+            </div>
+            <div class="col p-0">
+              <button type="button" class="btn btn-sm btn-light">Voltar</button>
+            </div>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

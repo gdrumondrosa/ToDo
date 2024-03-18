@@ -46,6 +46,8 @@ namespace Server.Controllers {
     [HttpDelete("{taskId}")]
     public async System.Threading.Tasks.Task<ActionResult> DeleteTaskAsync(int taskId) {
       Server.Models.Task task = await _context.Tasks.FindAsync(taskId);
+      if(task == null)
+        return NotFound();
       _context.Remove(task);
       await _context.SaveChangesAsync();
       return Ok();
