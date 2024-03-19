@@ -7,6 +7,13 @@ Este projeto foi desenvolvido com o intuito de mostrar meus conhecimentos em des
 - A tarefa deve possuir status que indiquem sua situação
 - Visualizar a lista de tarefas
 - Filtrar as tarefas por status
+- Botão Sort que ordena as tarefas por status
+- Botão Reload que limpa filtro e ordenação
+
+#Propostas de Melhoria
+- Colunas de status em que seja possível arrastar as tarefas de acordo com seu andamento
+- Inclusão de datas limite para as tarefas
+- Sistema de Login e compartilhamento de tarefas entre equipes (associação de responsáveis para cada tarefa)
 
 #Requisitos Técnicos
 - Backend: .NET Core
